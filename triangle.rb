@@ -14,9 +14,21 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a,b,c) 
-  return :equilateral if a == b && a == c 
-  return :isosceles if a == b || a == c || b == c
-  return :scalene 
+  sides = [a,b,c]
+
+  if sides.any? { |side| side >= (a + b + c) - side } 
+    raise TriangleError, "the parameters violate triangle inequality"
+  end
+
+  case sides.uniq.length
+  when 1
+    return :equilateral
+  when 2
+    return :isosceles
+  when 3
+    return :scalene
+  end
+
 end
 
 # Error class used in part 2.  No need to change this code.
