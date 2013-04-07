@@ -130,5 +130,4 @@ class AboutControlStatements < EdgeCase::Koan
     end
     assert_equal ["FISH", "AND", "CHIPS"], result
   end
-
 end
